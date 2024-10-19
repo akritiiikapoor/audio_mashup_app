@@ -14,7 +14,12 @@ from email.mime.base import MIMEBase
 from email import encoders
 from yt_dlp import YoutubeDL
 from pydub import AudioSegment
-import streamlit as st
+import streamlit as stt
+import imageio
+
+# Set FFmpeg path for pydub
+ffmpeg_path = imageio.plugins.ffmpeg.get_exe()
+AudioSegment.converter = ffmpeg_path
 
 # Function to install Python packages
 def install_package(package_name):
@@ -58,7 +63,7 @@ def download_and_convert_videos(search_query, num_videos):
                 'preferredquality': '192',
             }],
             'noprogress': False,
-            'verbose': True,  # Enable verbose logging
+            'verbose': True,
         }
 
         downloaded_files = []
@@ -66,14 +71,17 @@ def download_and_convert_videos(search_query, num_videos):
             search_results = ydl.extract_info(f"ytsearch{num_videos}:{search_query}", download=False)
 
             for video in search_results['entries']:
-                print(f"Downloading: {video['title']}")
-                ydl.download([video['webpage_url']])
-                mp3_file = f"{video['title']}.mp3"
-                downloaded_files.append(mp3_file)
-                if not os.path.exists(mp3_file):
-                    print(f"Error: {mp3_file} was not created.")
-                else:
-                    print(f"Downloaded and converted {mp3_file}")
+                try:
+                    print(f"Downloading: {video['title']}")
+                    ydl.download([video['webpage_url']])
+                    mp3_file = f"{video['title']}.mp3"
+                    downloaded_files.append(mp3_file)
+                    if not os.path.exists(mp3_file):
+                        print(f"Error: {mp3_file} was not created.")
+                    else:
+                        print(f"Downloaded and converted {mp3_file}")
+                except Exception as download_error:
+                    print(f"Failed to download {video['title']}: {download_error}")
 
         return downloaded_files
 
