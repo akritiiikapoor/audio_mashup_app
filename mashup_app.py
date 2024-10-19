@@ -14,7 +14,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from yt_dlp import YoutubeDL
 from pydub import AudioSegment
-import streamlit as stt
+import streamlit as st
 import imageio
 
 # Set FFmpeg path for pydub
