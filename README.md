@@ -20,6 +20,7 @@ FFmpeg: Required for audio conversion and manipulation.
 ![Screenshot 2024-10-21 044454](https://github.com/user-attachments/assets/9abb624f-7af3-46c2-9e20-7f3cfdb64244)
 
 Features
+
 Search & Download Videos: Enter a search query, and the app downloads the audio from the top YouTube search results.
 
 Create Mashups: Cuts and merges the first few seconds of each downloaded audio file into a single mashup.
