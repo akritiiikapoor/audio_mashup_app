@@ -29,6 +29,8 @@ Email Integration: Zips the final mashup file and sends it directly to the recip
 
 ![Screenshot 2024-10-21 044441](https://github.com/user-attachments/assets/57089f43-13fd-4a7b-b888-e242b805e8d8)
 
+WORKING: 
+
 Download & Convert: The app uses yt-dlp to download the audio from YouTube videos based on the search query. The audio is converted to .mp3 format.
 
 Create Mashup: It then trims the first few seconds (based on user input) from each audio file and merges them into one mashup.
